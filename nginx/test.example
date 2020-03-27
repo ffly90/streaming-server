@@ -1,0 +1,33 @@
+server {
+
+	root /var/www/html;
+	index index.html;
+	server_name test.example;
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+   
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff"; 
+    add_header Strict-Transport-Security "max-age=63072000";
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/test.example/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/test.example/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+   	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = test.example) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+	listen 80 ;
+	listen [::]:80 ;
+
+	server_name test.example;
+    return 404; # managed by Certbot
+}

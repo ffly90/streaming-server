@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<title>streaming</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/video.js@7.7.5/dist/video-js.min.css" integrity="sha384-xI2vGALQzmd8MyNAdLvXhoojA5jmG3yET1XiRbtStkBZ/GwZaJXqUrFxNtOsRiGE" crossorigin="anonymous">
+	<script src="https://unpkg.com/video.js@7.7.5/dist/video.min.js" integrity="sha384-EerhOZsAIGsAhYn1Hs2Z5OutDjmD7A17unVJFBfabCB7NxuEYLo+nZXq99TCHRw9" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+</head>
+<body>
+	<div class="topnav">
+  		<a href="">streaming</a>
+  		<a href="https://test.example/corona.html">video</a>
+  		<a href="https://test.example/selbstverstandnis/">about</a>
+	</div>
+	
+	<div class="row">
+	    <div class="column side"  style="background-color:#bbb;">
+	    </div>
+	    <div class="column middle" style="background-color:#bbb;">
+	    <h2>steaming</h2>
+	    <font color="red"><b>derzeit kein aktiver stream</b></font>
+		<video 	id="about" 
+			class="video-js vjs-default-skin vjs-big-play-centered" 
+			controls
+			preload="auto"
+   			poster="https://test.example/testbild.png"
+			>
+  		<source
+     			src="https://test.example/hls/stream.m3u8"
+     			type="application/x-mpegURL">
+		  	<p class="vjs-no-js">
+		    		To view this video please enable JavaScript, and consider upgrading to a
+		    		web browser that
+		    	<a href="https://videojs.com/html5-video-support/" target="_blank">
+		      		supports HTML5 video
+		    	</a>
+		  	</p>
+		
+		</video>
+		<script>
+			var player = videojs('about', {
+				responsive: true,
+				fluid: true
+			});
+			//player.play();
+		</script>
+	    </div>
+	    <div class="column side"  style="background-color:#bbb;">
+	    </div>
+	</div>
+	<div class="footer">
+  		<p>proudly presented by group</p>
+	</div>
+<body>
